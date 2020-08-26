@@ -9,9 +9,14 @@ class City:
         self.city_name = city_name
         self.city_description = city_description
 
-    # Create a method that returns the details of the city
+    # Prints the values i the city class
 
+    def __repr__(self):
+        return f"city_name:{self.city_name}, city_description:{self.city_description}"
+
+    # Create a method that returns the details of the city
     # Create a getCityDetails()
     # We can specify a return type with -> (which is good practice for other coders to read your code)
+
     def getCityDetails(self) -> str:
         return f"{self.city_name}, {self.city_description}"
