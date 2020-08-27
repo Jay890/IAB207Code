@@ -1,4 +1,5 @@
-from application.travel.user import User
+# Here we have a shortened path import using the __init__.py (package)
+from application.travel import User
 # Import the class User from user.py
 from application.travel.city import City
 # Import the City class from city.py
@@ -7,6 +8,14 @@ from application.travel.booking import Booking
 from datetime import datetime
 
 from application.travel.frequent_traveller import FrequentTraveller
+
+from application.travel import master_user_instance
+# Now we can pass this as a parameter or register a user. So this is how you can share code between parts of your
+# python application
+
+# from teh __init__.py
+from application.travel import x
+print(x)
 
 # Create an instance of that class by naming it whatever we want followed by class name()
 user_instance = User()
@@ -48,3 +57,22 @@ frequent_traveller_instance.register_user(
     "Coco pops", "tasty123", "cocopops@gmail.com", "100")
 
 print(frequent_traveller_instance)
+
+
+# A tip for inheritance. In our conceptual model. Booking has a relationship with User and City. So knows about them.
+# However, booking doesn't know that FrequentTraveller exists. But because FrequentTraveller class is a IS relationship type
+# with User. So FrequentTraveller is a type of User and is inherited we can use still use FrequentTraveller as a user in relation
+# to Booking
+
+# For example. If we created the frequent_traveller_instance. Then in the booking_stance we have created before with user_instance
+# we can now pass in frequent_traveller_instance instead
+
+booking_instance2 = Booking(
+    datetime.now(), datetime.now(), frequent_traveller_instance, city_instance)
+print(booking_instance2)
+
+# So the above code still runs even though in the Booking constructor we ask for a user and never imported the
+# FrequentTraveller class into Booking class. But because FrequentTraveller inherits from User class (is a type of User)
+# We can then still pass it as a type of user
+# But in the Booking class we won't have access and we can't see the specific attributes from
+# FrequentTraveller class e.g. num_booking

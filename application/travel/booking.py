@@ -13,7 +13,6 @@ class Booking:
     end_date: date
     booking_date: date
     num_guest: int
-
     user: User
     city: City
 
