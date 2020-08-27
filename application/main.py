@@ -6,6 +6,7 @@ from application.travel.booking import Booking
 # import the Booking class from booking.py
 from datetime import datetime
 
+from application.travel.frequent_traveller import FrequentTraveller
 
 # Create an instance of that class by naming it whatever we want followed by class name()
 user_instance = User()
@@ -31,6 +32,19 @@ city_place2 = City("Perth", "It's very cool")
 
 city_details2 = city_place2.getCityDetails()
 
+
+# Create an instance of FrequentTraveller class
+frequent_traveller_instance = FrequentTraveller()
+
 print(city_details2)
 print(city_instance)
 print(booking_instance)
+
+
+# frequent_traveller_instance.register(
+#     "Customer 2", "password", "email@gmail.com")
+
+frequent_traveller_instance.register_user(
+    "Coco pops", "tasty123", "cocopops@gmail.com", "100")
+
+print(frequent_traveller_instance)
