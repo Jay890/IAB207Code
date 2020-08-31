@@ -9,13 +9,13 @@ from datetime import datetime
 
 from app.travel.frequent_traveller import FrequentTraveller
 
-from app.travel import master_user_instance
+# from app.travel import master_user_instance
 # Now we can pass this as a parameter or register a user. So this is how you can share code between parts of your
 # python application
 
 # from teh __init__.py
-from app.travel import x
-print(x)
+# from app.travel import x
+# print(x)
 
 # Create an instance of that class by naming it whatever we want followed by class name()
 user_instance = User()
