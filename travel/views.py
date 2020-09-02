@@ -9,7 +9,10 @@ main_blueprint = Blueprint('main', __name__)
 @main_blueprint.route('/')
 # define the controller to be the index controller
 def index_controller():
-    return "<h1>hello world</h1>" #view 
+    if 'email' in session: #if the email is in session aka user has logged in
+        return f"<h1>Hello World {session['email']}</h1>"
+    else:
+        return "<h1>hello world anonymous</h1>" #view 
 
 # Now we need to register the blueprint and tell the application that using this Blueprint (__init__.py)
 
@@ -27,3 +30,8 @@ def login_controller():
     return render_template('login.html')
 
  
+@main_blueprint.route('/logout')
+def logout_controller():
+    #  session.pop('email', None)
+    session.clear()
+    return "Session is cleared you have been logged out safely."
