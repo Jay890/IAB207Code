@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, session
 
 
 # define a blueprint
@@ -18,6 +18,12 @@ def new_controller():
     str = "<h2>Well hello there!</h2>"
     return str
 
-@main_blueprint.route('/login')
+@main_blueprint.route('/login', methods=['GET', 'POST'])
 def login_controller():
+    # print(request)
+    # print(request.values.get('email')) #so we can get values grabbing their id. E.g. this is the id set for the email in the login.html
+    # print(request.values.get('pwd'))
+    session['email'] = request.values.get('email')
     return render_template('login.html')
+
+ 
