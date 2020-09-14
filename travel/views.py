@@ -36,5 +36,5 @@ def logout_controller():
     #  session.pop('email', None)
     session.clear()
     return "Session is cleared you have been logged out safely."
-
-    
+# now register the blueprint in __init__.py 
+     
