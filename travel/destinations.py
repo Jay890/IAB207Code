@@ -2,6 +2,7 @@ from flask import Blueprint, render_template
 from travel.models.comment import Comment
 from datetime import datetime
 from travel.models.destination import Destination
+from travel.forms import DestinationForm
 
 # create an instance of the destinations_blueprint
 destinations_blueprint = Blueprint('destination', __name__, url_prefix='/destinations')
@@ -19,6 +20,13 @@ def show(id):
     return render_template('destinations/show.html', destination = destination_instance)
     # return render_template('destinations/show.html', comment=comment_instance)
     # the key value pair of key=id will be found and replaced in destinations/show.html (value in url) to provide some server side rendering
+
+@destinations_blueprint.route('/create')
+def create():
+    destination_form_instance = DestinationForm()
+    return render_template('destinations/create.html', form=destination_form_instance)
+ 
+
 
 
 # So we need to create an instance of destination
