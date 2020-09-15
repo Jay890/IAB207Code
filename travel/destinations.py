@@ -31,12 +31,14 @@ def database_get_destination_details() -> Destination:
     comment_instance1 = Comment('Bob', 'The food here is pretty good!', datetime.now())
     comment_instance2 = Comment('John', 'This place is pretty nice!', datetime.now())
     comment_instance3 = Comment('Dude', 'There are many different restuarants here!', datetime.now())
+    comment_instance4 = Comment('Brock', 'Hey, Ash!', datetime.now())
 
     mylist = list()
     mylist.append(comment_instance1)
     mylist.append(comment_instance2)
     mylist.append(comment_instance3)
+    mylist.append(comment_instance4)
 
-    destination_instance = Destination("Tivoli", "Small town of Rome!!", "https://cdn.thecrazytourist.com/wp-content/uploads/2018/05/ccimage-shutterstock_109711781.jpg","EUR", mylist)
+    destination_instance = Destination("Tivoli", "Small town of Rome!!", "https://www.planetware.com/wpimages/2019/04/italy-from-rome-to-tivoli-best-ways-to-get-there-rome-tivoli-by-train.jpg","EUR", mylist)
 
     return destination_instance
