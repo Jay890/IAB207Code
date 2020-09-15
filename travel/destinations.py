@@ -21,9 +21,13 @@ def show(id):
     # return render_template('destinations/show.html', comment=comment_instance)
     # the key value pair of key=id will be found and replaced in destinations/show.html (value in url) to provide some server side rendering
 
-@destinations_blueprint.route('/create')
+@destinations_blueprint.route('/create', methods=['GET', 'POST'])
 def create():
     destination_form_instance = DestinationForm()
+    if destination_form_instance.validate_on_submit():
+        print('form is valid')
+    else:
+        print('form is not valid')
     return render_template('destinations/create.html', form=destination_form_instance)
  
 
