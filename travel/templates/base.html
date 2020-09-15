@@ -36,6 +36,14 @@
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="#">Destinations</a>
             <a class="nav-item nav-link" href="#">Bookings</a>
+            <a href="#">
+                <!-- if the user is logged in(has a session) render image -->
+                {% if session['email'] %}
+                <img class="img-fluid" height="20" width="40" src="https://cdn.onlinewebfonts.com/svg/img_568656.png" alt="account icon">
+                {% else %}
+                <!-- Else Do nothing -->
+                    {% endif %}
+            </a> 
         </div>
         </div>
     </div>
