@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, url_for, redirect
 from travel.models.comment import Comment
 from datetime import datetime
 from travel.models.destination import Destination
@@ -26,6 +26,7 @@ def create():
     destination_form_instance = DestinationForm()
     if destination_form_instance.validate_on_submit():
         print('form is valid')
+        return redirect(url_for('destination.create'))
     else:
         print('form is not valid')
     return render_template('destinations/create.html', form=destination_form_instance)
