@@ -1,4 +1,5 @@
-{% extends 'base.html' %}  
+{% extends 'base.html' %} 
+{% import "bootstrap/wtf.html" as wtf %} 
 	 
 {% block content %}
 <!-- <h1>{{key}}</h1>   -->
@@ -7,7 +8,7 @@
     <div class="col-md-12">  
     <div class="float-left">  
         <h1 class="mb-0">Italy</h1>  
-        <p>Popular Destination</p>  
+        <p>Popular Destination</p> 
     </div>  
 
     <div class="float-right text-right">  
@@ -42,7 +43,8 @@
     <h2>Comments</h1>  
     </div>  
 </div>  
-
+ 
+{{wtf.quick_form(form, "/destinations/{0}/comment".format(1))}}
 {% for comment in destination.comments %}
 <div class="row border-bottom">  
     <div class="col-md-12">  

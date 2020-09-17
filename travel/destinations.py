@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, url_for, redirect
 from travel.models.comment import Comment
 from datetime import datetime
 from travel.models.destination import Destination
-from travel.forms import DestinationForm
+from travel.forms import DestinationForm, CommentForm
 
 # create an instance of the destinations_blueprint
 destinations_blueprint = Blueprint('destination', __name__, url_prefix='/destinations')
@@ -17,7 +17,8 @@ destinations_blueprint = Blueprint('destination', __name__, url_prefix='/destina
 def show(id):
     # comment_instance = Comment('Bob', 'The food here is pretty good!', datetime.now())
     destination_instance = database_get_destination_details()
-    return render_template('destinations/show.html', destination = destination_instance)
+    comment_form_instance = CommentForm()
+    return render_template('destinations/show.html', destination = destination_instance, form = comment_form_instance)
     # return render_template('destinations/show.html', comment=comment_instance)
     # the key value pair of key=id will be found and replaced in destinations/show.html (value in url) to provide some server side rendering
 
@@ -30,8 +31,16 @@ def create():
     else:
         print('form is not valid')
     return render_template('destinations/create.html', form=destination_form_instance)
- 
 
+@destinations_blueprint.route('/<id>/comment', methods=['POST'])
+def comment(id):
+    comment_form_instance = CommentForm()
+    if comment_form_instance.validate_on_submit():
+        # to do save the comment somewhere
+        print(f'Comment form is valid. The comment was {comment_form_instance.comment.data}')
+    else:
+        print("Comment form invalid")
+    return redirect(url_for('destination.show', id=id))
 
 
 # So we need to create an instance of destination
