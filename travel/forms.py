@@ -19,7 +19,11 @@ class LoginForm(FlaskForm):
 
 class RegisterForm(FlaskForm):
     user_name = StringField('User name', validators=[InputRequired('User name is required')])
-    email_id = StringField('Email address', validators=[[InputRequired('Email is required')], Email("Please enter a valid email")])
+    email = StringField('Email', validators=[InputRequired('Email is required'), Email('Email is not valid')])
     password = PasswordField('Enter Password', validators=[InputRequired("Password is required")])
-    confirm_password = PasswordField('Enter same password', validators= [InputRequired('Password is required'), EqualTo('password', message='Passwords do not match')])
+    confirm_password = PasswordField('Enter same password', validators=[InputRequired('Password is required'), EqualTo('password', message='Passwords do not match')])
     submit = SubmitField('Register')
+
+class CommentForm(FlaskForm):
+    comment = TextAreaField('Comment', validators=[InputRequired("Please add comment"), Length(min=5, max=100, message='Comment is too long or too short')])
+    submit = SubmitField('Add Comment')
