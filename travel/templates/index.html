@@ -32,7 +32,8 @@
         <div class="align-self-center media-body">
           <h5 class="mt-0">Find the best destinations on earth</h5>
           <p class="d-none d-sm-block">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.</p>
-          <a href="#" class="btn btn-primary">Join Now</a>
+          <a href="{{url_for('authentication.register')}}" class="btn btn-primary">Register</a>
+          <a href="{{url_for('authentication.login')}}" class="btn btn-primary">Login</a>
         </div>
       </div>
     </div>
@@ -46,6 +47,7 @@
         <p class="card-text">France, in Western Europe, encompasses medieval cities, alpine villages and Mediterranean beaches. Paris, its capital, is famed for its fashion houses, classical art museums including the Louvre and monuments like the Eiffel Tower. The country is also renowned for its wines and sophisticated cuisine. Lascaux’s ancient cave drawings, 
           Lyon’s Roman theater and the vast Palace of Versailles attest to its rich history.</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <a href="{{url_for('destination.show', id=1)}}" class="btn btn-primary">Learn More</a>
       </div>
     </div>
     <div class="card">
@@ -55,6 +57,7 @@
         <p class="card-text">The United Kingdom, made up of England, Scotland, Wales and Northern Ireland, is an island nation in northwestern Europe. England – birthplace of Shakespeare and The Beatles – is home to the capital, London, a globally influential centre of finance and culture. England is also site of Neolithic Stonehenge, 
           Bath’s Roman spa and centuries-old universities at Oxford and Cambridge.</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <a href="{{url_for('destination.show', id=1)}}" class="btn btn-primary">Learn More</a>
       </div>
     </div>
     <div class="card">
@@ -66,6 +69,7 @@
           presence of Michelangelo's David and Sistine Chapel frescoes, Botticelli's Birth of Venus and
           Primavera and da Vinci's The Last Supper.</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <a href="{{url_for('destination.show', id=1)}}" class="btn btn-primary">Learn More</a>
       </div>
     </div>
   </div>
