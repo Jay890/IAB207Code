@@ -3,6 +3,7 @@ from travel.models.comment import Comment
 from datetime import datetime
 from travel.models.destination import Destination
 from travel.forms import DestinationForm, CommentForm
+from travel import db
 
 # create an instance of the destinations_blueprint
 destinations_blueprint = Blueprint('destination', __name__, url_prefix='/destinations')
