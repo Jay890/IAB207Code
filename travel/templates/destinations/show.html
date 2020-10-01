@@ -44,13 +44,13 @@
     </div>  
 </div>  
  
-{{wtf.quick_form(form, "/destinations/{0}/comment".format(1))}}
+{{wtf.quick_form(form, "/destinations/{0}/comment".format(destination.id))}}
 {% for comment in destination.comments %}
 <div class="row border-bottom">  
     <div class="col-md-12">  
-    <b>{{comment.user}} <span class="ml-2 text-muted">{{comment.timestamp}}</span></b>  
-    <p>{{comment.comment_text}}</p>  
-    </div>  
+    <b>{{comment.user}} <span class="ml-2 text-muted">{{comment.created_at}}</span></b>
+    <p>{{comment.text}}</p>
+    </div>
 </div>  
 {% endfor  %}
 </div>  

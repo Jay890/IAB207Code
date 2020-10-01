@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, TextAreaField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
+from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 # our destinationform is a FlaskForm (inheritance) is a type
 class DestinationForm(FlaskForm):

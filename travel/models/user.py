@@ -1,15 +1,26 @@
 # Class keyword followed by the name of class (uppercase convention)
 from travel import db
+from flask_login import UserMixin
+from travel import login_manager
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     # good practice to specify table name and also allows all data (current and new) to be put in users table
-    __table__ = 'users'
+    __tablename__ = 'users'
     # define the primary key in class
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
+    email = db.Column(db.String(100), index=True, nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
+
+    # Virtual property - backref
+    comments = db.relationship('Comment', backref='user')
 
 
+# from .models import User
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
     # user_name: str
     # password_hash: str
