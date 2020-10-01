@@ -8,6 +8,17 @@
     <div class="row my-4">
         <div class="col-md-4"></div>
         <div class="col-md-4">
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+
             <h1>Register</h1>
             {{wtf.quick_form(form)}}
         </div>
