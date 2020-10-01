@@ -6,6 +6,8 @@ from travel.forms import DestinationForm, CommentForm
 from travel import db
 from werkzeug import secure_filename
 import os
+from flask_login import login_required
+
 
 # create an instance of the destinations_blueprint
 destinations_blueprint = Blueprint('destination', __name__, url_prefix='/destinations')
@@ -32,6 +34,7 @@ def show(id):
 
 
 @destinations_blueprint.route('/create', methods=['GET', 'POST'])
+@login_required
 def create():
     form = DestinationForm()
     if form.validate_on_submit():
@@ -62,13 +65,14 @@ def create():
         db.session.add(destination)
         db.session.commit()
 
+        print('form is not valid')
         return redirect(url_for('destination.create'))
     else:
-        print('form is not valid')
-    return render_template('destinations/create.html', form=destination_form_instance)
+        return render_template('destinations/create.html', form=form)
 
 
 @destinations_blueprint.route('/<id>/comment', methods=['POST'])
+@login_required
 def comment(id):
     comment_form_instance = CommentForm()
     if comment_form_instance.validate_on_submit():

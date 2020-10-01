@@ -21,14 +21,14 @@ def login():
             flash('username or password is incorrect')
             return redirect(url_for('authentication.login'))
         # 2. username is correct but password isn't
-        if check_password_hash(user.password_hash, login_form_instance.password.data):
+        if not check_password_hash(user.password_hash, login_form_instance.password.data):
             flash('username or password is incorrect')
             return redirect(url_for('authentication.login'))
         # 3. username and password is correct
         login_user(user)
 
         # return the name of the blueprint and the name of controller
-        return redirect(url_for('authentication.login'))
+        return redirect(url_for('main.index_controller'))
     return render_template('authentication/login.html', form=login_form_instance)
 
 
