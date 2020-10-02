@@ -5,7 +5,7 @@ from travel.forms import LoginForm
 from travel.forms import RegisterForm
 from travel import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 authentication_blueprint = Blueprint('authentication', __name__, url_prefix='/authentication')
 
@@ -61,5 +61,6 @@ def register():
 
 @authentication_blueprint.route('/logout')
 def logout():
-    session.clear()
+    # session.clear()
+    logout_user()
     return render_template('authentication/logout.html')

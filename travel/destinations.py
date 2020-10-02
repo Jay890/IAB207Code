@@ -6,8 +6,7 @@ from travel.forms import DestinationForm, CommentForm
 from travel import db
 from werkzeug import secure_filename
 import os
-from flask_login import login_required
-
+from flask_login import login_required, current_user
 
 # create an instance of the destinations_blueprint
 destinations_blueprint = Blueprint('destination', __name__, url_prefix='/destinations')
@@ -77,11 +76,14 @@ def comment(id):
     comment_form_instance = CommentForm()
     if comment_form_instance.validate_on_submit():
         destination = Destination.query.filter_by(id=id).first()
+        # note current_user is not a method its static - we don't actually invoke the method call
+        user = current_user
         # write operation to database - first create an instance of comment
         comment = Comment()
 
         comment.text = comment_form_instance.comment.data
         comment.destination = destination
+        comment.user = user
         # comment.destination_id = id
 
         db.session.add(comment)
